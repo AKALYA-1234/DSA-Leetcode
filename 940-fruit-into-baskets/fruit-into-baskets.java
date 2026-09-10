@@ -3,7 +3,6 @@ class Solution {
         int n=nums.length;
         int left=0;
         int ans=0;
-        int sum=0;
         HashMap<Integer,Integer> mp=new HashMap<>();
         for(int right=0;right<n;right++){
             int curr=nums[right];
@@ -16,11 +15,7 @@ class Solution {
                 }
                 left++;
             }
-            sum=0;
-            for(int val:mp.values()){
-                sum+=val;
-            }
-            ans=Math.max(ans,sum);
+            ans=Math.max(ans,right-left+1);
         }
         return ans;
     }
