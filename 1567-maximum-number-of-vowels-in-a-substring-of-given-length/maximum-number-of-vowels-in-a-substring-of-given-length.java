@@ -1,6 +1,6 @@
 class Solution {
     boolean isVowel(char ch){
-        return "aeiou".indexOf(ch)!=-1;
+        return ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u';
     }
     public int maxVowels(String s, int k) {
         int n=s.length();
