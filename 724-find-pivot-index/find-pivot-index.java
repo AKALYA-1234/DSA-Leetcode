@@ -9,12 +9,12 @@ class Solution {
         for(int i=0;i<n;i++){
             if(i==0){
                 if(prefixsum[n-1]-prefixsum[0]==0){
-                    return 0;
+                    return i;
                 }
             }
             else if(i==n-1){
                 if(prefixsum[n-2]==0){
-                    return n-1;
+                    return i;
                 }
             }
             else{
