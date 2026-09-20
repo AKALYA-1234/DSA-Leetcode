@@ -1,15 +1,15 @@
 class NumMatrix {
-    int[][] prefix;
+    int[][] prefixsum;
     public NumMatrix(int[][] matrix) {
-        int a=matrix.length;
-        int b=matrix[0].length;
-        prefix=new int[a][b];
-        for(int i=0;i<a;i++){
-            prefix[i][0]=matrix[i][0];
+        int n=matrix.length;
+        int m=matrix[0].length;
+        prefixsum=new int[n][m];
+        for(int i=0;i<n;i++){
+            prefixsum[i][0]=matrix[i][0];
         }
-        for(int i=0;i<a;i++){
-            for(int j=1;j<b;j++){
-                prefix[i][j]=prefix[i][j-1]+matrix[i][j];
+        for(int i=0;i<n;i++){
+            for(int j=1;j<m;j++){
+                prefixsum[i][j]=prefixsum[i][j-1]+matrix[i][j];
             }
         }
     }
@@ -18,18 +18,12 @@ class NumMatrix {
         int sum=0;
         for(int i=row1;i<=row2;i++){
             if(col1==0){
-                sum+=prefix[i][col2];
+                sum+=prefixsum[i][col2];
             }
             else{
-                sum+=prefix[i][col2]-prefix[i][col1-1];
+                sum+=prefixsum[i][col2]-prefixsum[i][col1-1];
             }
         }
         return sum;
     }
 }
-
-/**
- * Your NumMatrix object will be instantiated and called as such:
- * NumMatrix obj = new NumMatrix(matrix);
- * int param_1 = obj.sumRegion(row1,col1,row2,col2);
- */
