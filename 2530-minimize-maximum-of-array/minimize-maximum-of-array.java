@@ -3,13 +3,11 @@ class Solution {
         int n=nums.length;
         int[] ceil=new int[n];
         long prefixsum=0;
-        for(int i=0;i<n;i++){
-            prefixsum+=nums[i];
-            ceil[i]=(int)Math.ceil((prefixsum+i)/(i+1));
-        }
         int ans=0;
         for(int i=0;i<n;i++){
-            ans=Math.max(ans,ceil[i]);
+            prefixsum+=nums[i];
+            int current=(int)Math.ceil((prefixsum+i)/(i+1));
+            ans=Math.max(ans,current);
         }
         return ans;
     }
