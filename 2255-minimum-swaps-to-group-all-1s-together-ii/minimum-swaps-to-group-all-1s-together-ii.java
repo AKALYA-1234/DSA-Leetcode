@@ -1,31 +1,31 @@
 class Solution {
     public int minSwaps(int[] nums) {
         int n=nums.length;
-        int[] arr=new int[n*2];
+        int[] arr=new int[2*n];
         for(int i=0;i<2*n;i++){
             arr[i]=nums[i%n];
         }
-        int totalone=0;
+        int one=0;
         for(int i=0;i<n;i++){
             if(nums[i]==1){
-                totalone++;
+                one++;
             }
         }
-        int left=0;
         int currone=0;
-        int maxone=0;
+        int ans=0;
+        int left=0;
         for(int i=0;i<2*n;i++){
             if(arr[i]==1){
                 currone++;
             }
-            while(i-left+1>totalone){
+            while(i-left+1>one){
                 if(arr[left]==1){
                     currone--;
                 }
                 left++;
             }
-            maxone=Math.max(maxone,currone);
+            ans=Math.max(ans,currone);
         }
-        return totalone-maxone;
+        return one-ans;
     }
 }
