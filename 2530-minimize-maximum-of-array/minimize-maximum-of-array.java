@@ -6,7 +6,7 @@ class Solution {
         int ans=0;
         for(int i=0;i<n;i++){
             prefixsum+=nums[i];
-            int current=(int)Math.ceil((prefixsum+i)/(i+1));
+            int current=(int)((prefixsum+i)/(i+1));
             ans=Math.max(ans,current);
         }
         return ans;
