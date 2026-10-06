@@ -1,7 +1,6 @@
 class Solution {
     public int minAddToMakeValid(String s) {
-        int open=0;
-        int close=0;
+        int need=0;
         Stack<Character> st=new Stack<>();
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)=='('){
@@ -13,19 +12,19 @@ class Solution {
                     continue;
                 }
                 else{
-                    open++;
+                    need++;
                 }
                 }
                 
             else{
-                open++;
+                need++;
             }
             }
         }
         while(!st.isEmpty()){
-            open++;
+            need++;
             st.pop();
         }
-        return open;
+        return need;
     }
 }
