@@ -6,6 +6,7 @@ class Solution {
         int[] nse=new int[n];
         Arrays.fill(nse,n);
         Stack<Integer> st=new Stack<>();
+        //next smallest element
         for(int i=0;i<n;i++){
             int curr=i;
             while(!st.isEmpty()&&nums[st.peek()]>=nums[i]){
@@ -17,6 +18,7 @@ class Solution {
             st.push(curr);
         }
         st.clear();
+        //previous smallest element
         for(int i=n-1;i>=0;i--){
             int curr=i;
             while(!st.isEmpty()&&nums[st.peek()]>=nums[i]){
