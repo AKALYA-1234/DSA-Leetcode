@@ -12,6 +12,11 @@ class Solution {
                 high=mid-1;
             }
         }
-        return letters[low%n];
+        if(low>=n){
+            return letters[0];
+        }
+        else{
+            return letters[low];
+        }
     }
 }
