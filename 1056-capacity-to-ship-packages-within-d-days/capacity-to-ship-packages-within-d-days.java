@@ -7,7 +7,7 @@ class Solution {
             low=Math.max(low,weights[i]);
             high+=weights[i];
         }
-        while(low<high){
+        while(low<=high){
             int mid=low+(high-low)/2;
             int currentweight=0;
             int requiredweight=1;
@@ -19,7 +19,7 @@ class Solution {
                 currentweight+=weights[i];
             }
             if(requiredweight<=days){
-                high=mid;
+                high=mid-1;
             }
             else{
                 low=mid+1;
