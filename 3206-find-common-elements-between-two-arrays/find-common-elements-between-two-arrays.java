@@ -21,9 +21,6 @@ class Solution {
                 right++;
             }
         }
-        int[] ans=new int[2];
-        ans[0]=left;
-        ans[1]=right;
-        return ans;
+        return new int[]{left,right};
     }
 }
