@@ -4,12 +4,10 @@ class Solution {
         int ans=0;
         HashSet<Integer> set=new HashSet<>();
         for(int i=0;i<n;i++){
+            set.clear();
             for(int j=i;j<n;j++){
-                for(int k=i;k<=j;k++){
-                    set.add(nums.get(k));
-                }
+                set.add(nums.get(j));
                 ans+=set.size()*set.size();
-                set.clear();
             }
         }
         return ans;
