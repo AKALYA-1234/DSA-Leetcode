@@ -1,14 +1,14 @@
 class Solution {
     public long maximumSubarraySum(int[] nums, int k) {
         int n=nums.length;
-        int left=0;
+        HashMap<Integer,Integer> mp=new HashMap<>();
         long ans=0;
         long sum=0;
-        HashMap<Integer,Integer> mp=new HashMap<>();
+        int left=0;
         for(int right=0;right<n;right++){
-            mp.put(nums[right],mp.getOrDefault(nums[right],0)+1);
             sum+=nums[right];
-            while(right-left+1==k){
+            mp.put(nums[right],mp.getOrDefault(nums[right],0)+1);
+            if(right-left+1==k){
                 if(mp.size()==k){
                     ans=Math.max(ans,sum);
                 }
