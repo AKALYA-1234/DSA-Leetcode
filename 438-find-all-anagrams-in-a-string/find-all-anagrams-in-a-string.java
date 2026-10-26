@@ -1,35 +1,35 @@
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        int n=s.length();
-        int m=p.length();
-        HashMap<Character,Integer> mp=new HashMap<>();
-        HashMap<Character,Integer> mp2=new HashMap<>();
+        int m=s.length();
+        int n=p.length();
         List<Integer> ans=new ArrayList<>();
-        if(m>n){
+        if(m<n){
             return ans;
         }
-        for(int i=0;i<m;i++){
-            char curr=p.charAt(i);
-            mp2.put(curr,mp2.getOrDefault(curr,0)+1);
+        HashMap<Character,Integer> original=new HashMap<>();
+        HashMap<Character,Integer> curr=new HashMap<>();
+        for(int i=0;i<n;i++){
+            char ch=p.charAt(i);
+            original.put(ch,original.getOrDefault(ch,0)+1);
         }
-        for(int i=0;i<m;i++){
-            char curr=s.charAt(i);
-            mp.put(curr,mp.getOrDefault(curr,0)+1);
+        for(int i=0;i<n;i++){
+            char ch=s.charAt(i);
+            curr.put(ch,curr.getOrDefault(ch,0)+1);
         }
-        if(mp.equals(mp2)){
+        if(original.equals(curr)){
             ans.add(0);
         }
         int left=0;
-        for(int i=m;i<n;i++){
-            char curr=s.charAt(i);
-            mp.put(curr,mp.getOrDefault(curr,0)+1);
+        for(int right=n;right<m;right++){
+            char ch=s.charAt(right);
+            curr.put(ch,curr.getOrDefault(ch,0)+1);
             char prev=s.charAt(left);
-            mp.put(prev,mp.get(prev)-1);
-            if(mp.get(prev)==0){
-                mp.remove(prev);
+            curr.put(prev,curr.get(prev)-1);
+            if(curr.get(prev)==0){
+                curr.remove(prev);
             }
             left++;
-            if(mp.equals(mp2)){
+            if(curr.equals(original)){
                 ans.add(left);
             }
         }
