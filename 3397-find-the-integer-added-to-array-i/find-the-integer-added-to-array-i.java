@@ -6,8 +6,6 @@ class Solution {
             if(nums1[i]<min){
                 min=nums1[i];
             }
-        }
-        for(int i=0;i<nums2.length;i++){
             if(nums2[i]<min2){
                 min2=nums2[i];
             }
